@@ -1,0 +1,30 @@
+package com.example.newswires.Adapter.ViewHolder
+
+import android.view.View
+
+import androidx.recyclerview.widget.RecyclerView
+import com.example.newswires.Interface.ItemClickListener
+import kotlinx.android.synthetic.main.news_layout.view.*
+
+
+class ListNewsViewHolder (itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener{
+
+
+            private lateinit var itemClickListener: ItemClickListener
+
+            var articleTitle = itemView.article_title
+            var articleImage = itemView.article_image
+
+            init {
+                itemView.setOnClickListener(this)
+            }
+
+              fun setItemClickListener(itemClickListener: ItemClickListener)
+              {
+                  this.itemClickListener=itemClickListener
+              }
+
+                override fun onClick(v: View?) {
+                    itemClickListener.onclick(v!!,adapterPosition)
+    }
+}
